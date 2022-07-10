@@ -25,6 +25,7 @@ const postFees = catchAsyncErrors(async (req, res, next) => {
   console.log(req.body);
   // Adding user to body
 
+ try {
   const fees = await Fees.create(req.body);
 
   res.status(200).json({
@@ -32,13 +33,18 @@ const postFees = catchAsyncErrors(async (req, res, next) => {
     message: "Job Created.",
     data: fees,
   });
+ } catch (error) {
+  throw error;
+ }
 });
 
 // @desc    Get the slit fees
 // @route   GET /split-payments/compute
 // @access  Public
 const postFeeComputation = catchAsyncErrors( async (req, res, next) => {
-    const { Balance, SplitBreakdown } = Calculate.Data(req.body);  
+
+  try {
+     const { Balance, SplitBreakdown } = Calculate.Data(req.body);  
     const fees = await Fees.find({"ID":req.body.ID});
     let Transaction;
     console.log(fees.length);
@@ -54,6 +60,10 @@ const postFeeComputation = catchAsyncErrors( async (req, res, next) => {
         Balance: Balance,
         SplitBreakdown: SplitBreakdown,
     });
+  } catch (error) {
+    throw error;
+  }
+   
 });
 
 // @desc    Delete Fees

@@ -1,0 +1,30 @@
+{
+  "name": "lannisterapi",
+  "version": "1.0.0",
+  "description": "NodeJS API service that implements the TPSS requirements shared by LannisterPay",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "prod": "SET NODE_ENV=production & node backend/server.js"
+  },
+  "keywords": [
+    "LannisterPay",
+    "Flutterwave",
+    "Assessment"
+  ],
+  "author": "Okoro Stephen",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "install": "^0.13.0",
+    "mongoose": "^6.4.3",
+    "validator": "^13.7.0"
+  },
+  "engines": {
+    "node": "16.15.0"
+  }
+}
